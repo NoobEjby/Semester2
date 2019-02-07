@@ -64,6 +64,16 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void GetInfoButton(ActionEvent event) {
+        if (!FirstPar.getText().isEmpty()) {
+            if (tg.getSelectedToggle().getUserData() == ShapeFacade.SHAPES.CIRCLE || tg.getSelectedToggle().getUserData() == ShapeFacade.SHAPES.SQUERE) {
+                InfoField.setText(ShapeFacade.getInstance().getShapeInfo((ShapeFacade.SHAPES) tg.getSelectedToggle().getUserData(), new double[]{Double.parseDouble(FirstPar.getText())}));
+            }
+            if (!SecondPar.getText().isEmpty()) {
+                if (tg.getSelectedToggle().getUserData() == ShapeFacade.SHAPES.ELLIPSE || tg.getSelectedToggle().getUserData() == ShapeFacade.SHAPES.RECTANGLE) {
+                    InfoField.setText(ShapeFacade.getInstance().getShapeInfo((ShapeFacade.SHAPES) tg.getSelectedToggle().getUserData(), new double[]{Double.parseDouble(FirstPar.getText()),Double.parseDouble(SecondPar.getText())}));
+                }
+            }
+        }
     }
 
     @FXML
